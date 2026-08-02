@@ -1,3 +1,5 @@
+import QuickAccess from "./components/QuickAccess";
+
 const services = [
   { title: "E-book profissional", price: "a partir de R$ 329,90", text: "Diagramação digital, capa, ISBN digital, ficha catalográfica e arquivo final em PDF." },
   { title: "Autor Independente Essencial", price: "a partir de R$ 359,90", text: "Publicação profissional com capa, ISBN, ficha catalográfica e arquivo para impressão." },
@@ -28,6 +30,8 @@ export default function Home() {
         </nav>
         <a className="header-cta" href="/cliente">Área do cliente <span>↗</span></a>
       </header>
+
+      <QuickAccess />
 
       <section className="hero" id="inicio">
         <div className="hero-copy">

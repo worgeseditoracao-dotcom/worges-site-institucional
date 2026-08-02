@@ -1,6 +1,6 @@
 "use client";
 
-import { FormEvent, useState } from "react";
+import { FormEvent, useEffect, useState } from "react";
 import { usePathname } from "next/navigation";
 
 type Message = { from:"bot"|"user"; text:string };
@@ -27,7 +27,7 @@ function answerFor(message:string){
 
 export default function WorgesAssistant(){
   const pathname=usePathname();
-  const [open,setOpen]=useState(false);
+  const [open,setOpen]=useState(true);
   const [messages,setMessages]=useState<Message[]>(initial);
   const [draft,setDraft]=useState("");
   const [handoff,setHandoff]=useState(false);
@@ -35,6 +35,13 @@ export default function WorgesAssistant(){
   const [success,setSuccess]=useState(false);
   const [error,setError]=useState("");
   const shouldHide=pathname.startsWith("/admin");
+
+  useEffect(()=>{
+    const openAssistant=()=>setOpen(true);
+    window.addEventListener("worges:open-assistant",openAssistant);
+    return()=>window.removeEventListener("worges:open-assistant",openAssistant);
+  },[]);
+
   if(shouldHide) return null;
 
   function send(text=draft){
@@ -52,7 +59,7 @@ export default function WorgesAssistant(){
     try{const response=await fetch("/api/leads",{method:"POST",headers:{"content-type":"application/json"},body:JSON.stringify(payload)});const data=await response.json() as {error?:string};if(!response.ok)throw new Error(data.error||"Não foi possível enviar.");setSuccess(true)}catch(e){setError(e instanceof Error?e.message:"Não foi possível enviar.")}finally{setSending(false)}
   }
 
-  return <div className={`assistant-widget ${open?"open":""}`}>
+  return <div id="assistente-worges" className={`assistant-widget ${open?"open":""}`}>
     {open&&<section className="assistant-panel" aria-label="Assistente virtual Worges">
       <header><div><span>W</span><p><strong>Assistente Worges</strong><small>Online agora</small></p></div><button onClick={()=>setOpen(false)} aria-label="Fechar assistente">×</button></header>
       {!handoff?<><div className="assistant-messages" aria-live="polite">{messages.map((message,index)=><p key={index} className={message.from}>{message.text}</p>)}</div><div className="assistant-options">{quickOptions.map(option=><button key={option} onClick={()=>option==="Falar com a produtora"?setHandoff(true):send(option)}>{option}</button>)}</div><form className="assistant-compose" onSubmit={e=>{e.preventDefault();send()}}><input value={draft} onChange={e=>setDraft(e.target.value)} placeholder="Digite sua dúvida..." aria-label="Mensagem para a assistente"/><button aria-label="Enviar mensagem">→</button></form><small className="assistant-disclaimer">Atendimento virtual. Não envie documentos ou dados bancários neste chat.</small></>:success?<div className="handoff-success"><span>✓</span><h3>Contato registrado</h3><p>A produtora editorial receberá o resumo e falará com você pelo WhatsApp informado, por mensagem.</p><button onClick={()=>{setHandoff(false);setSuccess(false)}}>Voltar à conversa</button></div>:<form className="handoff-form" onSubmit={submitLead}><button type="button" className="back" onClick={()=>setHandoff(false)}>← Voltar</button><h3>Falar com a produtora</h3><p>Deixe os dados essenciais do projeto. O contato será feito somente por mensagem.</p><label>Nome<input name="name" required maxLength={120}/></label><label>WhatsApp com DDD<input name="phone" required inputMode="tel" placeholder="(93) 99999-9999"/></label><label>E-mail, se desejar<input name="email" type="email"/></label><label>Projeto<select name="projectType" required defaultValue=""><option value="" disabled>Selecione</option><option>Livro</option><option>Capítulo</option><option>Trabalho acadêmico</option><option>Outro projeto editorial</option></select></label><label>Pacote de interesse<select name="packageInterest" defaultValue="Ainda não sei"><option>Ainda não sei</option><option>E-book</option><option>Autor Independente Essencial</option><option>Autor Independente Completo</option><option>Combo Autor Acadêmico</option><option>Publicação de capítulo</option></select></label><label>Conte brevemente sobre o projeto<textarea name="projectSummary" required maxLength={1000}/></label><label>Melhor período para mensagens<select name="preferredTime" defaultValue="Qualquer horário comercial"><option>Manhã</option><option>Tarde</option><option>Qualquer horário comercial</option></select></label><label className="consent"><input type="checkbox" name="consent" required/><span>Autorizo a Worges Editoração a usar este número exclusivamente para entrar em contato sobre meu projeto.</span></label>{error&&<p className="form-error">{error}</p>}<button className="send-lead" disabled={sending}>{sending?"Enviando...":"Solicitar contato por WhatsApp"}</button><small>Não realizamos ligações nem reuniões por vídeo.</small></form>}

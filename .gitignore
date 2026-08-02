@@ -1,0 +1,16 @@
+node_modules/
+.next/
+dist/
+.vercel/
+.sites-runtime/
+.wrangler/
+
+# Codex workspace folders
+work/
+outputs/
+
+# Local files
+.DS_Store
+*.log
+.env*
+!.env.example

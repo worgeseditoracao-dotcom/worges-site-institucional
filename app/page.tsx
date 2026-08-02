@@ -35,7 +35,7 @@ export default function Home() {
           </div>
         </div>
         <div className="hero-art" aria-label="Livros e páginas em composição editorial sofisticada">
-          <img src="/hero-editorial.png" alt="Livros em tons vinho e grafite, com papéis marfim" />
+          <img src="https://raw.githubusercontent.com/worgeseditoracao-dotcom/plataforma-worges/main/public/hero-editorial.png" alt="Livros em tons vinho e grafite, com papéis marfim" />
         </div>
         <div className="feature-strip">
           <article><span className="feature-icon">▱</span><div><strong>Publicação completa</strong><small>Do manuscrito ao livro publicado</small></div></article>

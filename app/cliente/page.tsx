@@ -1,5 +1,162 @@
-"use client";
 /* eslint-disable @next/next/no-html-link-for-pages */
+"use client";
 import { useState } from "react";
 
-export default function ClientPage(){const [message,setMessage]=useState("");const [sent,setSent]=useState(false);return <main className="client-page"><header className="client-header"><a className="brand" href="/"><strong>WORGES</strong><span>ÁREA DO CLIENTE</span></a><div><span>Olá, Bruno</span><button>BF</button></div></header><div className="client-shell"><aside className="client-nav"><p>MINHA CONTA</p><a className="active">Minha obra</a><a>Arquivos e aprovações <b>2</b></a><a>Conversas <b>1</b></a><a>Pagamentos</a><a>Dados pessoais</a><a href="/">Sair</a></aside><section className="client-content"><div className="client-welcome"><div><p className="eyebrow">PEDIDO WG-0263</p><h1>Test drive</h1><span>Histórias que inspiram você a viver um novo tempo</span></div><button>Preciso de ajuda</button></div><article className="progress-card"><div className="progress-head"><div><span className="status diagramacao">Em diagramação</span><p>Previsão de entrega: <strong>14 de agosto de 2026</strong></p></div><strong>55%</strong></div><div className="progress-bar"><i></i></div><div className="steps"><div className="done"><b>✓</b><span>Contratação<small>Concluída em 28 jul</small></span></div><div className="done"><b>✓</b><span>Revisão<small>Concluída em 02 ago</small></span></div><div className="current"><b>3</b><span>Diagramação<small>Em andamento</small></span></div><div><b>4</b><span>Conferência<small>Próxima etapa</small></span></div><div><b>5</b><span>Finalização<small>Entrega dos arquivos</small></span></div></div></article><div className="client-grid"><article className="client-panel"><div className="panel-title"><div><p className="eyebrow">ARQUIVOS</p><h2>Para sua conferência</h2></div><span>2 pendentes</span></div><div className="approval-file"><b>PDF</b><div><strong>Prova_01_Test_drive.pdf</strong><small>Enviado em 03 ago • 8,4 MB</small></div><button>Abrir e conferir</button></div><div className="approval-file"><b>JPG</b><div><strong>Proposta_capa_02.jpg</strong><small>Enviado em 03 ago • 3,1 MB</small></div><button>Abrir e conferir</button></div></article><article className="client-panel conversation"><div className="panel-title"><div><p className="eyebrow">CONVERSA DO PEDIDO</p><h2>Fale com a equipe</h2></div></div><div className="bubble staff"><small>Worges • ontem, 16:38</small><p>Olá, Bruno! Enviamos a primeira prova para sua conferência.</p></div><div className="bubble user"><small>Você • hoje, 09:12</small><p>Obrigado! Vou conferir e retorno até amanhã.</p></div>{sent&&<div className="bubble user"><small>Você • agora</small><p>{message}</p></div>}<form onSubmit={e=>{e.preventDefault();if(message){setSent(true)}}}><input value={message} onChange={e=>{setMessage(e.target.value);setSent(false)}} placeholder="Escreva uma mensagem..."/><button>Enviar</button></form></article></div></section></div></main>}
+export default function ClientPage() {
+  const [message, setMessage] = useState("");
+  const [sent, setSent] = useState(false);
+  return (
+    <main className="client-page">
+      <header className="client-header">
+        <a className="brand" href="/">
+          <strong>WORGES</strong>
+          <span>ÁREA DO CLIENTE</span>
+        </a>
+        <div>
+          <span>Olá, Cliente Exemplo</span>
+          <button>BF</button>
+        </div>
+      </header>
+      <div className="client-shell">
+        <aside className="client-nav">
+          <p>MINHA CONTA</p>
+          <a className="active">Minha obra</a>
+          <a>
+            Arquivos e aprovações <b>2</b>
+          </a>
+          <a>
+            Conversas <b>1</b>
+          </a>
+          <a>Pagamentos</a>
+          <a>Dados pessoais</a>
+          <a href="/">Sair</a>
+        </aside>
+        <section className="client-content">
+          <div className="client-welcome">
+            <div>
+              <p className="eyebrow">PEDIDO DEMO-0001</p>
+              <h1>Projeto Editorial Demonstrativo</h1>
+              <span>Exemplo fictício da área de acompanhamento</span>
+            </div>
+            <button>Preciso de ajuda</button>
+          </div>
+          <article className="progress-card">
+            <div className="progress-head">
+              <div>
+                <span className="status diagramacao">Em diagramação</span>
+                <p>
+                  Previsão de entrega: <strong>14 de agosto de 2026</strong>
+                </p>
+              </div>
+              <strong>55%</strong>
+            </div>
+            <div className="progress-bar">
+              <i></i>
+            </div>
+            <div className="steps">
+              <div className="done">
+                <b>✓</b>
+                <span>
+                  Contratação<small>Concluída em 28 jul</small>
+                </span>
+              </div>
+              <div className="done">
+                <b>✓</b>
+                <span>
+                  Revisão<small>Concluída em 02 ago</small>
+                </span>
+              </div>
+              <div className="current">
+                <b>3</b>
+                <span>
+                  Diagramação<small>Em andamento</small>
+                </span>
+              </div>
+              <div>
+                <b>4</b>
+                <span>
+                  Conferência<small>Próxima etapa</small>
+                </span>
+              </div>
+              <div>
+                <b>5</b>
+                <span>
+                  Finalização<small>Entrega dos arquivos</small>
+                </span>
+              </div>
+            </div>
+          </article>
+          <div className="client-grid">
+            <article className="client-panel">
+              <div className="panel-title">
+                <div>
+                  <p className="eyebrow">ARQUIVOS</p>
+                  <h2>Para sua conferência</h2>
+                </div>
+                <span>2 pendentes</span>
+              </div>
+              <div className="approval-file">
+                <b>PDF</b>
+                <div>
+                  <strong>Prova_01_Projeto_Demonstrativo.pdf</strong>
+                  <small>Enviado em 03 ago • 8,4 MB</small>
+                </div>
+                <button>Abrir e conferir</button>
+              </div>
+              <div className="approval-file">
+                <b>JPG</b>
+                <div>
+                  <strong>Proposta_capa_02.jpg</strong>
+                  <small>Enviado em 03 ago • 3,1 MB</small>
+                </div>
+                <button>Abrir e conferir</button>
+              </div>
+            </article>
+            <article className="client-panel conversation">
+              <div className="panel-title">
+                <div>
+                  <p className="eyebrow">CONVERSA DO PEDIDO</p>
+                  <h2>Fale com a equipe</h2>
+                </div>
+              </div>
+              <div className="bubble staff">
+                <small>Worges • ontem, 16:38</small>
+                <p>
+                  Olá! Enviamos a primeira prova para sua conferência.
+                </p>
+              </div>
+              <div className="bubble user">
+                <small>Você • hoje, 09:12</small>
+                <p>Obrigado! Vou conferir e retorno até amanhã.</p>
+              </div>
+              {sent && (
+                <div className="bubble user">
+                  <small>Você • agora</small>
+                  <p>{message}</p>
+                </div>
+              )}
+              <form
+                onSubmit={(e) => {
+                  e.preventDefault();
+                  if (message) {
+                    setSent(true);
+                  }
+                }}
+              >
+                <input
+                  value={message}
+                  onChange={(e) => {
+                    setMessage(e.target.value);
+                    setSent(false);
+                  }}
+                  placeholder="Escreva uma mensagem..."
+                />
+                <button>Enviar</button>
+              </form>
+            </article>
+          </div>
+        </section>
+      </div>
+    </main>
+  );
+}

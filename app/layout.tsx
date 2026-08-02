@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import "./globals.css";
+import WorgesAssistant from "./components/WorgesAssistant";
 
 export const metadata: Metadata = {
   title: "Worges Editoração | Do original à publicação",
@@ -8,5 +9,5 @@ export const metadata: Metadata = {
 };
 
 export default function RootLayout({ children }: Readonly<{ children: React.ReactNode }>) {
-  return <html lang="pt-BR"><body>{children}</body></html>;
+  return <html lang="pt-BR"><body>{children}<WorgesAssistant/></body></html>;
 }

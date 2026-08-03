@@ -111,7 +111,7 @@ footer{background:#fff}
 .publication-hero{background:radial-gradient(circle at 80% 25%,rgba(0,187,212,.08),transparent 26%),radial-gradient(circle at 65% 80%,rgba(214,58,140,.06),transparent 30%),#fff}
 .package-section{background:#fbfaf7}.package-card,.chapter-package-card,.template-card{background:#fff;border-color:rgba(23,24,27,.14);box-shadow:0 14px 38px rgba(23,24,27,.05)}
 .package-card.featured{background:radial-gradient(circle at top right,rgba(214,58,140,.07),transparent 30%),#fff}.package-card li,.chapter-package-card li,.academic-package li{color:#4b5058}
-.chapter-packages{background:#f5f2eb}.academic-package{background:linear-gradient(125deg,#fff,#f4f0e7);color:#17181b}.comparison-table{background:#fff}.comparison-table th,.comparison-table td{color:#363a41}.publication-note{background:#fff}
+.chapter-packages{background:#f5f2eb}.academic-package{background:linear-gradient(125deg,#fff,#f4f0e7);color:#17181b}.comparison-table{background:#fff;border-color:#d8d3c9}.comparison-table th,.comparison-table td{color:#363a41}.comparison-table thead th{background:#f2e7cf;color:#17181b;border-bottom:2px solid #b98a25;font-weight:700}.comparison-table tbody tr:nth-child(even){background:#fbf8f2}.publication-note{background:#fff}
 
 /* Checkout e área do cliente em fundo claro */
 .checkout-page{background:radial-gradient(circle at 20% 20%,#f3e9d4,#fbfaf7 42%);color:#17181b}.checkout-header{background:#fff}.checkout-lead,.checkout-benefits{color:#5f646b}
